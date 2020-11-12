@@ -21,7 +21,7 @@ function Summary() {
   )
 }
 
-const Container = styled.div`
+const Container = styled.article`
   display: flex;
   justify-content: space-around;
   padding-bottom: 24px;
@@ -31,7 +31,7 @@ const Container = styled.div`
   }
 `
 
-const Flex = styled.div`
+const Flex = styled.article`
   align-items: center;
   border: 3px solid #5a7702;
   display: flex;

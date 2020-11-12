@@ -11,24 +11,30 @@ function EditBox({ name, date, description, onClose, type }) {
       <button onClick={onClose}>X</button>
       <form>
         <FormField>
-          <label>Name:</label>
+          <label htmlFor="formName">Name:</label>
           <input
+            id="formName"
+            aria-required="false"
             type="text"
             value={formName}
             onChange={(name) => setFormName(name)}
           />
         </FormField>
         <FormField>
-          <label>Date:</label>
+          <label htmlFor="formDate">Date:</label>
           <input
+            id="formDate"
+            aria-required="false"
             type="text"
             value={formDate}
             onChange={(date) => setFormDate(date)}
           />
         </FormField>
         <FormField>
-          <label>Description:</label>
+          <label htmlFor="formDescription">Description:</label>
           <input
+            id="formDescription"
+            aria-required="false"
             type="text"
             value={formDescription}
             onChange={(description) => setFormDescription(description)}
@@ -58,7 +64,7 @@ async function updateData(url = "", data = {}) {
     return response.json()
 }
 
-const Container = styled.div`
+const Container = styled.section`
     border: 1px solid #a39bb0;
     margin: 24px auto 0 auto;
     width: 50%;

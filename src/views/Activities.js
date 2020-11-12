@@ -9,7 +9,9 @@ function Activities() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await getData("https://fakerapi.it/api/v1/custom?_quantity=31&name=word&date=date&description=text")
+      const res = await getData(
+        "https://fakerapi.it/api/v1/custom?_quantity=31&name=word&date=date&description=text"
+      )
       setActivitiesData(res.data)
     }
     fetchData()
