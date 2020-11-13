@@ -23,7 +23,9 @@ describe("Activities", () => {
 
     render(<Activities />)
 
-    const renderedData = await waitFor(() => screen.getByText("Description: Lorem Upsum"))
+    const renderedData = await waitFor(() =>
+      screen.getByText("Date: 11/11/2020")
+    )
 
     expect(renderedData).toBeInTheDocument()
   })
