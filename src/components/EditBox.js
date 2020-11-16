@@ -17,7 +17,7 @@ function EditBox({ name, date, description, onClose, type }) {
             aria-required="false"
             type="text"
             value={formName}
-            onChange={(name) => setFormName(name)}
+            onChange={(e) => setFormName(e.target.value)}
           />
         </FormField>
         <FormField>
@@ -27,7 +27,7 @@ function EditBox({ name, date, description, onClose, type }) {
             aria-required="false"
             type="text"
             value={formDate}
-            onChange={(date) => setFormDate(date)}
+            onChange={(e) => setFormDate(e.target.value)}
           />
         </FormField>
         <FormField>
@@ -37,7 +37,7 @@ function EditBox({ name, date, description, onClose, type }) {
             aria-required="false"
             type="text"
             value={formDescription}
-            onChange={(description) => setFormDescription(description)}
+            onChange={(e) => setFormDescription(e.target.value)}
           />
         </FormField>
         <button onClick={async () => {
