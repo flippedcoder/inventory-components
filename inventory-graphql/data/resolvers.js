@@ -39,51 +39,59 @@ const rootDb = {};
 
 export const resolvers = {
   Query: {
-    getActivity: ({ id }) => {
+    getActivity: (_, { id }) => {
       return new Activity(id, rootDb[id]);
     },
-    getActivities: () => {
-      return new Activity(rootDb);
+    getActivities: (_) => {
+      const activityList = Object.entries(rootDb)
+      
+      return activityList.map((activityData) => new Activity(...activityData));
     },
-    getAlert: ({ id }) => {
+    getAlert: (_, { id }) => {
       return new Alert(id, rootDb[id]);
     },
-    getAlerts: () => {
-      return new Alert(rootDb);
+    getAlerts: (_) => {
+      const alertList = Object.entries(rootDb)
+      
+      return alertList.map((alertData) => new Alert(...alertData));
     },
-    getItem: ({ id }) => {
+    getItem: (_, { id }) => {
       return new Item(id, rootDb[id]);
     },
-    getItems: () => {
-      return new Item(rootDb);
+    getItems: (_) => {
+      const itemList = Object.entries(rootDb)
+      
+      return itemList.map((itemData) => new Item(...itemData));
     },
-    getUser: ({ id }) => {
+    getUser: (_, { id }) => {
       return new User(id, rootDb[id]);
     },
-    getUsers: () => {
-      return new User(rootDb);
+    getUsers: (_) => {
+      const userList = Object.entries(rootDb)
+      
+      return userList.map((userData) => new User(...userData));
     },
   },
   Mutation: {
-    createActivity: ({ input }) => {
+    createActivity: (_, { input }) => {
       const id = require("crypto").randomBytes(10).toString("hex");
       rootDb[id] = input;
 
       return new Activity(id, input);
     },
-    createAlert: ({ input }) => {
+    createAlert: (_, { input }) => {
       const id = require("crypto").randomBytes(10).toString("hex");
       rootDb[id] = input;
 
       return new Alert(id, input);
     },
-    createItem: ({ input }) => {
+    createItem: (_, { input }) => {
       const id = require("crypto").randomBytes(10).toString("hex");
       rootDb[id] = input;
 
       return new Item(id, input);
     },
-    createUser: ({ input }) => {
+    createUser: (_, { input }) => {
       const id = require("crypto").randomBytes(10).toString("hex");
       rootDb[id] = input;
 
