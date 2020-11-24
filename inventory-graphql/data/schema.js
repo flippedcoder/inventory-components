@@ -10,11 +10,6 @@ const typeDefs = `
         description: String
     }
 
-    type ActivityOverview {
-        name: String
-        date: String
-    }
-
     type Alert {
         id: ID
         name: String
@@ -55,18 +50,21 @@ const typeDefs = `
     }
 
     input ActivityInput {
+        id: ID
         name: String
         date: String
         description: String
     }
 
     input AlertInput {
+        id: ID
         name: String
         date: String
         description: String
     }
 
     input ItemInput {
+        id: ID
         name: String
         amount: Int
         date: String
@@ -74,6 +72,7 @@ const typeDefs = `
     }
 
     input UserInput {
+        id: ID
         name: String
         date: String
         description: String
@@ -84,6 +83,14 @@ const typeDefs = `
         createAlert(input: AlertInput): Alert
         createItem(input: ItemInput): Item
         createUser(input: UserInput): User
+        updateActivity(input: ActivityInput): Activity
+        updateAlert(input: AlertInput): Alert
+        updateItem(input: ItemInput): Item
+        updateUser(input: UserInput): User
+        deleteActivity(id: ID): String
+        deleteAlert(id: ID): String
+        deleteItem(id: ID): String
+        deleteUser(id: ID): String
     }
 `;
 
