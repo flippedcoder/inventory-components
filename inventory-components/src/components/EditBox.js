@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-function EditBox({ name, date, description, onClose, type }) {
+function EditBox({ id, name, date, description, onClose, updateData }) {
   const [formName, setFormName] = useState(name || "")
   const [formDate, setFormDate] = useState(date || new Date())
   const [formDescription, setFormDescription] = useState(description || "")
@@ -9,7 +9,18 @@ function EditBox({ name, date, description, onClose, type }) {
   return (
     <Container>
       <button onClick={onClose}>X</button>
-      <form>
+      <form
+        onSubmit={() => {
+          updateData({
+            variables: {
+              id,
+              name: formName,
+              date: formDate,
+              description: formDescription
+            }
+          })
+        }}
+      >
         <FormField>
           <label htmlFor="formName">Name:</label>
           <input
@@ -40,28 +51,10 @@ function EditBox({ name, date, description, onClose, type }) {
             onChange={(e) => setFormDescription(e.target.value)}
           />
         </FormField>
-        <button onClick={async () => {
-            await updateData(`https://fakedata.io/api/v1/${type}`, {
-                formName,
-                formDate,
-                formDescription
-            })
-        }}>Save</button>
+        <button type="submit">Save</button>
       </form>
     </Container>
   )
-}
-
-async function updateData(url = "", data = {}) {
-    const response = await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-
-    return response.json()
 }
 
 const Container = styled.section`

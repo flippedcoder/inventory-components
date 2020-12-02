@@ -3,24 +3,27 @@ import styled from "styled-components"
 
 import EditBox from "./EditBox"
 
-function RowContainer({ rowData, type }) {
+function RowContainer({ rowData, updateData, deleteData }) {
   const [showEditBox, setShowEditBox] = useState(false)
 
   return (
     <>
       <Container>
         <button onClick={() => setShowEditBox(true)}>Edit</button>
+        <button onClick={() => {
+          deleteData({
+            variables: { id: rowData.id }
+          })
+        }}>Delete</button>
         <p>Name: {rowData.name}</p>
         <p>Date: {rowData.date}</p>
         <p>Description: {rowData.description}</p>
       </Container>
       {showEditBox && (
         <EditBox
-          name={rowData.name}
-          date={rowData.date}
-          description={rowData.description}
-          type={type}
+          {...rowData}
           onClose={() => setShowEditBox(false)}
+          updateData={updateData}
         />
       )}
     </>

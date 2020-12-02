@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import MaterialTable from "material-table"
 
-function ItemList({ columns, data, title, showDetails }) {
+function ItemList({ columns, data, title, showDetails, createItem, deleteItem, updateItem }) {
   return (
     <FullWidth>
       <MaterialTable
@@ -13,7 +13,23 @@ function ItemList({ columns, data, title, showDetails }) {
           {
             icon: () => <ViewIcon />,
             tooltip: "View Details",
-            onClick: (_event, rowData) => showDetails(rowData)}
+            onClick: (_event, rowData) => showDetails(rowData)
+          },
+          {
+            icon: () => <CreateIcon />,
+            tooltip: "Create Details",
+            onClick: (_event, rowData) => createItem(rowData)
+          },
+          {
+            icon: () => <DeleteIcon />,
+            tooltip: "Delete Details",
+            onClick: (_event, rowData) => deleteItem(rowData)
+          },
+          {
+            icon: () => <UpdateIcon />,
+            tooltip: "Update Details",
+            onClick: (_event, rowData) => updateItem(rowData)
+          }
         ]}
       />
     </FullWidth>
@@ -27,7 +43,25 @@ const FullWidth = styled.div`
 const ViewIcon = styled.div`
   background-color: #d2bba2;
   height: 20px;
-  width: 50px;
+  width: 25px;
+`
+
+const CreateIcon = styled.div`
+  background-color: #83aacc;
+  height: 20px;
+  width: 25px;
+`
+
+const DeleteIcon = styled.div`
+  background-color: #bc26a2;
+  height: 20px;
+  width: 25px;
+`
+
+const UpdateIcon = styled.div`
+  background-color: #fa435c;
+  height: 20px;
+  width: 25px;
 `
 
 export default ItemList
