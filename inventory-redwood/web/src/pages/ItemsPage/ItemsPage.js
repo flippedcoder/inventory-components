@@ -1,6 +1,8 @@
-import { Link, routes } from "@redwoodjs/router"
-import styled from "styled-components"
-import MaterialTable from "material-table"
+import { Link, routes } from '@redwoodjs/router'
+import styled from 'styled-components'
+import MaterialTable from 'material-table'
+
+import MainLayout from 'src/layouts/MainLayout/MainLayout'
 
 const ItemsPage = () => {
   const columns = [
@@ -24,16 +26,14 @@ const ItemsPage = () => {
 
 function ItemList({ columns, data, title }) {
   return (
-    <FullWidth>
-      <MaterialTable
-        columns={columns}
-        data={data}
-        title={title}
-      />
-      <footer>
-        <Link to={routes.home()}>Home</Link>
-      </footer>
-    </FullWidth>
+    <MainLayout>
+      <FullWidth>
+        <MaterialTable columns={columns} data={data} title={title} />
+        <footer>
+          <Link to={routes.home()}>Home</Link>
+        </footer>
+      </FullWidth>
+    </MainLayout>
   )
 }
 
