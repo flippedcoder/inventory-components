@@ -1,27 +1,13 @@
 import React, { useState } from "react"
-import styled from "styled-components"
 
-import RowContainer from "src/components/RowContainer"
 import MainLayout from "src/layouts/MainLayout/MainLayout"
+import ActivityCell from "src/components/ActivityCell/ActivityCell"
 
 function Activities() {
   const [name, setName] = useState("")
   const [date, setDate] = useState("")
   const [description, setDescription] = useState("")
   const [showCreateForm, setShowCreateForm] = useState(false)
-
-  const data = [
-    {
-      name: "Get mustard",
-      date: "11/23/2020",
-      description: "Spicy brown mustard"
-    },
-    {
-      name: "Find hand soap dispensers",
-      date: "11/30/2020",
-      description: "Replace plastic ones"
-    }
-  ]
 
   return (
     <MainLayout>
@@ -57,17 +43,9 @@ function Activities() {
           <button type="submit">Save</button>
         </form>
       )}
-      {data.map((activity) => (
-        <SmallPadding key={activity.name}>
-          <RowContainer rowData={activity} type="activity" />
-        </SmallPadding>
-      ))}
+      <ActivityCell />
     </MainLayout>
   )
 }
-
-const SmallPadding = styled.div`
-  padding-bottom: 24px;
-`
 
 export default Activities

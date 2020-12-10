@@ -1,27 +1,13 @@
 import React, { useState } from "react"
-import styled from "styled-components"
 
-import RowContainer from "src/components/RowContainer"
 import MainLayout from "src/layouts/MainLayout/MainLayout"
+import AlertCell from "src/components/AlertCell/AlertCell"
 
 function Alerts() {
   const [name, setName] = useState("")
   const [date, setDate] = useState("")
   const [description, setDescription] = useState("")
   const [showCreateForm, setShowCreateForm] = useState(false)
-
-  const data = [
-    {
-      name: "Get mustard",
-      date: "11/23/2020",
-      description: "Spicy brown mustard"
-    },
-    {
-      name: "Find hand soap dispensers",
-      date: "11/30/2020",
-      description: "Replace plastic ones"
-    }
-  ]
 
   return (
     <MainLayout>
@@ -57,17 +43,9 @@ function Alerts() {
           <button type="submit">Save</button>
         </form>
       )}
-      {data.map((alert) => (
-        <SmallPadding key={alert.name}>
-          <RowContainer rowData={alert} type="alert" />
-        </SmallPadding>
-      ))}
+      <AlertCell />
     </MainLayout>
   )
 }
-
-const SmallPadding = styled.div`
-  padding-bottom: 24px;
-`
 
 export default Alerts
